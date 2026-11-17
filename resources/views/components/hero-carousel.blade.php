@@ -63,7 +63,7 @@
     @endif
 
     <div class="border-t border-line/80 bg-white/55">
-        <div class="container-page grid gap-4 py-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="container-page grid gap-4 py-5 lg:grid-cols-2 xl:grid-cols-4">
             @foreach (['Produksi in-house', 'Kontrol kualitas', 'Warna kustom', 'Layanan purna jual'] as $capability)
                 <div class="flex items-center gap-2.5 text-sm text-ink/80">
                     <svg class="h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 20 20" fill="none" aria-hidden="true">

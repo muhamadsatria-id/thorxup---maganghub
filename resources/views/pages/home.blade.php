@@ -257,7 +257,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter auto-rows-[220px]">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter auto-rows-auto lg:auto-rows-[220px]">
                     {{-- Category 01: tall editorial card --}}
                     <a href="{{ $c1 ? route('categories.detail', $c1) : route('categories') }}" class="group relative lg:col-span-4 row-span-2 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-inverse-surface border border-outline-variant/30">
                         <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c1?->name ?? 'Perawatan logam industri' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
@@ -409,7 +409,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-gutter">
                     @forelse ($productCards as $product)
                         <div class="bg-surface-container-lowest overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group rounded-[2px]">
                             <div class="relative h-52 bg-surface-container overflow-hidden">
@@ -499,7 +499,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
                     @forelse ($newsCards as $article)
                         <article class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
                             <div class="relative h-48 overflow-hidden bg-surface-container">
@@ -592,7 +592,7 @@
 
                 <div class="mt-space-2xl">
                     <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-lg text-center md:text-left">Pilar Nilai Inti</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-gutter">
                         @foreach ($pillars as $pillar)
                             <div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm">
                                 <div class="text-primary mb-space-sm">

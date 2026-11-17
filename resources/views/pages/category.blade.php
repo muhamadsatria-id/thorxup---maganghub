@@ -13,7 +13,7 @@
     <section class="py-14 md:py-20">
         <div class="container-page">
             @if ($categories->isNotEmpty())
-                <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
                     @foreach ($categories as $category)
                         <x-card-category
                             :category="$category"

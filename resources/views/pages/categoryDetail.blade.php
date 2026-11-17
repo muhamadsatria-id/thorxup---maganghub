@@ -29,7 +29,7 @@
                 </div>
 
                 @if ($products->isNotEmpty())
-                    <div class="mt-8 grid gap-5 sm:grid-cols-2">
+                    <div class="mt-8 grid gap-5 lg:grid-cols-2">
                         @foreach ($products as $product)
                             <x-product-card
                                 :product="$product"

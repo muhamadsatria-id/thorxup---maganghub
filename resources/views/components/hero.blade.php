@@ -88,7 +88,7 @@
     </div>
 
     <div class="border-t border-line/80 bg-white/70">
-        <div class="container-page grid gap-6 py-7 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="container-page grid gap-6 py-7 lg:grid-cols-2 xl:grid-cols-4">
             @foreach ([
                 ['Bahan pilihan', 'Maple, aluminium, dan kuningan B20.'],
                 ['Kustom penuh', 'Warna, emblem, dan ukuran menyesuaikan tim.'],
