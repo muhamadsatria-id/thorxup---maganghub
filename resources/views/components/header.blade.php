@@ -42,7 +42,7 @@
             <div class="hidden md:flex items-center">
                 <nav class="flex items-center gap-space-lg" aria-label="Navigasi utama">
                     @foreach ($navItems as $item)
-                        @if ($item['route'] === 'products')
+                        @if (false)
                             <div class="relative group py-space-xs">
                                 <button
                                     type="button"
