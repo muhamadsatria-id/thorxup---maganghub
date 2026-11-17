@@ -55,25 +55,6 @@
 
                                 <div class="absolute left-0 top-full pt-space-xs hidden group-hover:block group-focus-within:block transition-all">
                                     <div class="bg-surface-container-lowest rounded-2xl shadow-[0_14px_32px_-4px_rgba(57,73,171,0.12)] p-space-sm w-56 flex flex-col gap-space-xs border border-outline-variant/30">
-                                        @forelse ($navCategories as $category)
-                                            @php
-                                                $categoryActive = request()->routeIs('categories.detail')
-                                                    && request()->route('category')?->is($category);
-                                            @endphp
-
-                                            <a
-                                                href="{{ route('categories.detail', $category) }}"
-                                                class="px-space-md py-space-xs font-label-md text-label-md rounded-2xl transition-colors {{ $categoryActive ? 'bg-surface-container text-on-surface font-bold' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface' }}"
-                                                @if ($categoryActive) aria-current="page" @endif
-                                            >
-                                                {{ $category->name }}
-                                            </a>
-                                        @empty
-                                            <span class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant">
-                                                Kategori segera hadir
-                                            </span>
-                                        @endforelse
-
                                         <a
                                             href="{{ route('products') }}"
                                             class="px-space-md py-space-xs text-primary font-label-md text-label-md rounded-2xl hover:bg-surface-container hover:text-primary transition-colors font-bold"
@@ -140,23 +121,7 @@
                 </a>
             @endforeach
 
-            @if ($navCategories->isNotEmpty())
-                <div class="mt-space-sm border-t border-outline-variant/30 pt-space-sm">
-                    <p class="px-space-md py-space-xs text-label-md font-label-md uppercase tracking-wider text-secondary">
-                        Kategori
-                    </p>
-                    <div class="grid grid-cols-2">
-                        @foreach ($navCategories as $category)
-                            <a
-                                href="{{ route('categories.detail', $category) }}"
-                                class="rounded-2xl px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface"
-                            >
-                                {{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+
 
 
         </nav>
