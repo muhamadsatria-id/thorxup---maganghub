@@ -127,3 +127,4 @@
         </nav>
     </div>
 </header>
+@vite('resources/js/app.js')
