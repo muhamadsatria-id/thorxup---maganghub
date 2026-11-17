@@ -160,7 +160,7 @@
 </style>
 @endpush
 @section('content')
-    <div class="flex flex-col w-full overflow-x-hidden">
+    <div class="flex flex-col w-full" style="overflow-x: clip;">
         {{-- 1. HERO CAROUSEL --}}
         <section
             class="relative w-full overflow-hidden bg-primary text-on-primary h-[640px] md:h-[680px] lg:h-[720px] flex items-center select-none cursor-grab active:cursor-grabbing"
