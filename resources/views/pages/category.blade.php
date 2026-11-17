@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Kategori Produk — '.config('app.name', 'THORXup'))
-@section('meta_description', 'Jelajahi kategori perlengkapan drumband THORXup: snare, bass drum, tenor, cymbal, kostum, mayoret, dan color guard.')
+@section('meta_description', 'Jelajahi kategori perawatan logam Throx Up: protective coating, surface treatment, corrosion inhibitor, industrial cleaner, metal reconditioning, dan maintenance support.')
 
 @section('content')
     <x-page-hero
@@ -25,7 +25,7 @@
             @else
                 <div class="rounded-panel border border-dashed border-brand-200 bg-white p-10 text-center">
                     <p class="text-lg font-semibold text-brand-950">Kategori belum tersedia.</p>
-                    <p class="mt-2 text-sm text-muted">Hubungi tim untuk melihat pilihan perlengkapan yang sedang tersedia.</p>
+                    <p class="mt-2 text-sm text-muted">Hubungi tim untuk melihat pilihan produk yang sedang tersedia.</p>
                     <a href="{{ route('contact') }}" class="btn btn-primary mt-6">Hubungi tim</a>
                 </div>
             @endif

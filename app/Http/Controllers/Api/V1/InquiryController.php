@@ -31,7 +31,7 @@ class InquiryController extends Controller
         $inquiry->load('product');
 
         return response()->json([
-            'message' => 'Terima kasih. Tim THORXup akan menghubungi Anda pada jam kerja.',
+            'message' => 'Terima kasih. Tim Throx Up akan menghubungi Anda pada jam kerja.',
             'data' => new InquiryResource($inquiry),
         ], 201);
     }

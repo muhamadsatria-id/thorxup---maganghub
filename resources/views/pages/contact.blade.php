@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Kontak — '.config('app.name', 'THORXup'))
-@section('meta_description', 'Hubungi THORXup untuk konsultasi perlengkapan drumband, penawaran, kustom warna, dan jadwal produksi.')
+@section('meta_description', 'Hubungi Throx Up untuk konsultasi perawatan permukaan logam, penawaran produk, dan dukungan teknis aplikasi.')
 
 @php
     $brandName = $profile?->name ?? 'THORXup';
-    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perlengkapan drumband.');
+    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perawatan permukaan logam industri.');
     $socials = $profile?->socialLinks() ?? [];
 @endphp
 

@@ -14,9 +14,9 @@ class ProfileBrandSeeder extends Seeder
 
         $profile->fill([
             'name' => 'THORXup',
-            'vision' => 'Menjadi mitra drumband paling tepercaya di Indonesia — tempat sekolah, komunitas, dan tim performa menemukan perlengkapan yang rapi, tahan lama, dan siap panggung.',
-            'mission' => "Memproduksi perlengkapan drumband dengan bahan pilihan dan kontrol kualitas di setiap tahap.\nMendampingi tim dari pemilihan instrumen hingga penyesuaian kostum.\nMenjaga layanan purna jual yang cepat, jelas, dan bisa diandalkan.",
-            'core_values' => "Presisi\nKonsistensi\nKejujuran\nKolaborasi",
+            'vision' => 'Menjadi mitra tepercaya bagi industri manufaktur dan pemeliharaan mesin di Indonesia melalui solusi kimia permukaan logam yang inovatif, andal, dan berkelanjutan.',
+            'mission' => "Menghadirkan produk perawatan, perlindungan, dan rekondisi permukaan logam yang diformulasikan untuk ketahanan jangka panjang terhadap korosi, gesekan, dan degradasi permukaan.\nMenyediakan protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri untuk baja karbon, stainless steel, aluminium, dan logam non-ferrous lainnya.\nMendukung program perawatan preventif dan perlindungan aset mesin industri di seluruh Indonesia melalui kemitraan dengan PT Trit Indonesia dengan standar kualitas yang terjamin.",
+            'core_values' => "Inovasi\nKetahanan\nPresisi\nKolaborasi",
             'alamat' => 'Jl. Cigondewah Kaler No. 24, Bandung, Jawa Barat 40214',
             'email' => 'halo@thorxup.id',
             'phone' => '+62 812 3456 7890',

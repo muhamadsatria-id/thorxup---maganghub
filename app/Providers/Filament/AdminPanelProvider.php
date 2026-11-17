@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('THORXup Admin')
+            ->brandName('THORXup')
             ->colors([
                 'primary' => Color::hex('#1e3093'),
             ])

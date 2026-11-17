@@ -17,11 +17,12 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $type = fake()->randomElement([
-            'Snare Drum', 'Bass Drum', 'Tenor Drum', 'Cymbal Marching', 'Kostum Drumband', 'Mayoret Baton',
+            'Protective Coating', 'Surface Treatment', 'Corrosion Inhibitor',
+            'Industrial Cleaner', 'Metal Reconditioning', 'Maintenance Support',
         ]);
 
         return [
-            'name' => $type.' '.fake()->unique()->numerify('Seri ###'),
+            'name' => $type.' '.fake()->unique()->numerify('TX-###'),
             'category_id' => Category::factory(),
             'description' => fake()->paragraph(),
             'benefits' => implode("\n", fake()->sentences(3)),

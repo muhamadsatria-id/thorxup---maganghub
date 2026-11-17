@@ -8,9 +8,9 @@ use App\Models\Product;
 use App\Models\ProfileBrand;
 
 it('returns the public home payload', function () {
-    $profile = ProfileBrand::factory()->create(['name' => 'THORXup Drumband']);
-    $category = Category::factory()->create(['name' => 'Snare Drum']);
-    $product = Product::factory()->for($category)->create(['name' => 'Snare 14 inci', 'is_featured' => true]);
+    $profile = ProfileBrand::factory()->create(['name' => 'THORXup Industrial']);
+    $category = Category::factory()->create(['name' => 'Protective Coating']);
+    $product = Product::factory()->for($category)->create(['name' => 'TX-Surface Prep 110', 'is_featured' => true]);
     $news = News::factory()->create(['title' => 'Berita terbaru', 'published_at' => now()->subDay()]);
     Carousel::factory()->create(['title' => 'Slide utama']);
 
@@ -26,24 +26,24 @@ it('returns the public home payload', function () {
 
 it('returns only active products with filters and pagination', function () {
     $category = Category::factory()->create();
-    $active = Product::factory()->for($category)->create(['name' => 'Snare Aktif']);
-    Product::factory()->for($category)->create(['name' => 'Snare Nonaktif', 'is_active' => false]);
+    $active = Product::factory()->for($category)->create(['name' => 'Coating Aktif']);
+    Product::factory()->for($category)->create(['name' => 'Coating Nonaktif', 'is_active' => false]);
 
-    $this->getJson('/api/v1/products?category='.$category->id.'&q=Snare&per_page=5')
+    $this->getJson('/api/v1/products?category='.$category->id.'&q=Coating&per_page=5')
         ->assertOk()
         ->assertJsonPath('data.0.id', $active->id)
-        ->assertJsonPath('data.0.name', 'Snare Aktif')
+        ->assertJsonPath('data.0.name', 'Coating Aktif')
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('meta.total', 1)
         ->assertJsonPath('meta.per_page', 5);
 });
 
 it('returns a product detail and rejects an inactive product', function () {
-    $product = Product::factory()->create(['name' => 'Bass Drum 28 inci']);
+    $product = Product::factory()->create(['name' => 'TX-Corr Inhib 330']);
 
     $this->getJson('/api/v1/products/'.$product->id)
         ->assertOk()
-        ->assertJsonPath('data.name', 'Bass Drum 28 inci')
+        ->assertJsonPath('data.name', 'TX-Corr Inhib 330')
         ->assertJsonStructure([
             'data' => ['id', 'name', 'category' => ['id', 'name'], 'benefits', 'details', 'image_url'],
         ]);
@@ -54,13 +54,13 @@ it('returns a product detail and rejects an inactive product', function () {
 });
 
 it('returns categories with product counts', function () {
-    $category = Category::factory()->create(['name' => 'Cymbal']);
+    $category = Category::factory()->create(['name' => 'Industrial Cleaner']);
     Product::factory()->for($category)->create();
     Product::factory()->for($category)->create(['is_active' => false]);
 
     $this->getJson('/api/v1/categories')
         ->assertOk()
-        ->assertJsonPath('data.0.name', 'Cymbal')
+        ->assertJsonPath('data.0.name', 'Industrial Cleaner')
         ->assertJsonPath('data.0.products_count', 1);
 
     $this->getJson('/api/v1/categories/'.$category->id)
@@ -96,8 +96,8 @@ it('stores a valid inquiry', function () {
         'phone' => '081234567890',
         'product_id' => $product->id,
         'quantity' => 8,
-        'subject' => 'Penawaran snare',
-        'message' => 'Kami ingin meminta penawaran untuk 8 unit snare drum sekolah.',
+        'subject' => 'Penawaran coating',
+        'message' => 'Kami ingin meminta penawaran untuk protective coating.',
     ];
 
     $this->postJson('/api/v1/inquiries', $payload)

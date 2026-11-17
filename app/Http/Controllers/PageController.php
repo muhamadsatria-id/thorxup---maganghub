@@ -31,4 +31,19 @@ class PageController extends Controller
                 ->get(['id', 'name']),
         ]);
     }
+    // Tambahkan metode untuk halaman Privacy Policy
+    public function privacyPolicy(): View
+    {
+        return view('pages.privacy-policy', [
+            'profile' => ProfileBrand::query()->first(),
+        ]);
+}
+
+    // Tambahkan metode untuk halaman Terms of Service
+    public function termsOfService(): View
+    {
+        return view('pages.terms-of-service', [
+            'profile' => ProfileBrand::query()->first(),
+        ]);
+    }
 }

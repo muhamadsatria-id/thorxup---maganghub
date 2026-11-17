@@ -11,33 +11,33 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Snare Drum',
-                'description' => 'Snare marching dengan artikulasi tegas untuk barisan depan.',
+                'name' => 'Protective Coating',
+                'description' => 'Lapisan pelindung untuk ketahanan korosi dan degradasi permukaan pada logam industri.',
                 'sort_order' => 1,
             ],
             [
-                'name' => 'Bass Drum',
-                'description' => 'Bass drum bervolume besar dengan nada rendah yang stabil.',
+                'name' => 'Surface Treatment',
+                'description' => 'Perlakuan permukaan untuk meningkatkan adhesi dan kinerja lapisan pada berbagai paduan logam.',
                 'sort_order' => 2,
             ],
             [
-                'name' => 'Tenor & Quint',
-                'description' => 'Set tenor dan quint untuk pola ritmis yang lebih kaya.',
+                'name' => 'Corrosion Inhibitor',
+                'description' => 'Formulasi penghambat korosi untuk perlindungan jangka panjang pada sistem dan aset logam.',
                 'sort_order' => 3,
             ],
             [
-                'name' => 'Cymbal',
-                'description' => 'Cymbal marching dengan proyeksi terang dan sustain panjang.',
+                'name' => 'Industrial Cleaner',
+                'description' => 'Pembersih permukaan industri untuk menghilangkan kontaminan sebelum aplikasi lapisan.',
                 'sort_order' => 4,
             ],
             [
-                'name' => 'Kostum & Aksesori',
-                'description' => 'Kostum performa, sarung tangan, dan aksesori pendukung.',
+                'name' => 'Metal Reconditioning',
+                'description' => 'Produk rekondisi untuk memulihkan permukaan logam yang mengalami keausan dan gesekan.',
                 'sort_order' => 5,
             ],
             [
-                'name' => 'Mayoret & Color Guard',
-                'description' => 'Baton, bendera, dan perlengkapan tim visual.',
+                'name' => 'Maintenance Support',
+                'description' => 'Pendukung aplikasi dan perlengkapan untuk program perawatan preventif mesin industri.',
                 'sort_order' => 6,
             ],
         ];
@@ -48,5 +48,13 @@ class CategorySeeder extends Seeder
                 [...$category, 'is_active' => true],
             );
         }
+
+        // Hapus hanya data demo lama; jangan menyentuh kategori buatan admin.
+        Category::query()
+            ->whereIn('name', [
+                'Snare Drum', 'Bass Drum', 'Tenor & Quint',
+                'Cymbal', 'Kostum & Aksesori', 'Mayoret & Color Guard',
+            ])
+            ->delete();
     }
 }

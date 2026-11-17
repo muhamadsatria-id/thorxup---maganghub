@@ -67,7 +67,7 @@
                 </div>
 
                 <p class="font-body-md text-body-md text-on-primary-container max-w-sm mt-space-xs">
-                    Perlengkapan drumband yang dirancang untuk bunyi yang rapi, tampilan yang berani, dan performa yang bertahan.
+                    Produk perawatan dan perlindungan permukaan logam industri berkualitas tinggi untuk ketahanan maksimal.
                 </p>
             </div>
 

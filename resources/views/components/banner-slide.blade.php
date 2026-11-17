@@ -4,7 +4,7 @@
     $brandName = $profile?->name ?? config('app.name', 'THORXup');
     $imageUrl = $slide->imageUrl();
     $ctaHref = $slide->ctaHref() ?? route('products');
-    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perlengkapan drumband.') ?? route('contact').'#kontak';
+    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perawatan permukaan logam industri.') ?? route('contact').'#kontak';
     $indexLabel = str_pad((string) $index, 2, '0', STR_PAD_LEFT);
 @endphp
 
@@ -19,7 +19,7 @@
         <div class="hero-copy max-w-xl">
             <p class="eyebrow text-brand-700">
                 <span class="rule"></span>
-                {{ $slide->subtitle ?? 'Perlengkapan drumband performa' }}
+                {{ $slide->subtitle ?? 'Perawatan logam industri' }}
             </p>
 
             <h1 class="mt-6 text-[2.45rem] leading-[1.04] font-semibold tracking-[-0.035em] text-brand-950 sm:text-5xl lg:text-[3.35rem]">
@@ -95,7 +95,7 @@
                 <div class="absolute right-5 bottom-5 left-5 flex items-end justify-between gap-4">
                     <div>
                         <p class="text-[0.62rem] font-semibold tracking-[0.2em] text-brass-soft uppercase">
-                            {{ $slide->subtitle ?? 'Perlengkapan drumband' }}
+                            {{ $slide->subtitle ?? 'Perawatan logam industri' }}
                         </p>
                         <p class="mt-1 max-w-[14rem] text-sm font-medium text-white">
                             {{ $slide->cta_label ?? 'Siap dipesan untuk tim Anda' }}

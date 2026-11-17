@@ -8,8 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 it('renders the home page with content from the database', function () {
-    $profile = ProfileBrand::factory()->create(['name' => 'THORXup Drumband']);
-    $product = Product::factory()->create(['name' => 'Snare Drum Marching 14 inci']);
+    $profile = ProfileBrand::factory()->create(['name' => 'THORXup Industrial']);
+    $product = Product::factory()->create(['name' => 'TX-Protect EP 500']);
     $news = News::factory()->create([
         'title' => 'Kabar workshop terbaru',
         'published_at' => now()->subDay(),

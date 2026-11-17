@@ -21,21 +21,21 @@ it('renders the admin dashboard and its widgets', function () {
 
     $this->get('/admin')
         ->assertOk()
-        ->assertSee('THORXup Admin')
+        ->assertSee('THORXup')
         ->assertSee('Inquiry terbaru');
 });
 
 it('renders catalog admin screens', function () {
-    $category = Category::factory()->create(['name' => 'Snare Drum']);
-    $product = Product::factory()->for($category)->create(['name' => 'Snare 14 inci']);
+    $category = Category::factory()->create(['name' => 'Protective Coating']);
+    $product = Product::factory()->for($category)->create(['name' => 'TX-Surface Prep 110']);
 
-    $this->get('/admin/categories')->assertOk()->assertSee('Snare Drum');
+    $this->get('/admin/categories')->assertOk()->assertSee('Protective Coating');
     $this->get('/admin/categories/create')->assertOk();
-    $this->get('/admin/categories/'.$category->id.'/edit')->assertOk()->assertSee('Snare Drum');
+    $this->get('/admin/categories/'.$category->id.'/edit')->assertOk()->assertSee('Protective Coating');
 
-    $this->get('/admin/products')->assertOk()->assertSee('Snare 14 inci');
+    $this->get('/admin/products')->assertOk()->assertSee('TX-Surface Prep 110');
     $this->get('/admin/products/create')->assertOk();
-    $this->get('/admin/products/'.$product->id.'/edit')->assertOk()->assertSee('Snare 14 inci');
+    $this->get('/admin/products/'.$product->id.'/edit')->assertOk()->assertSee('TX-Surface Prep 110');
 });
 
 it('renders content admin screens', function () {

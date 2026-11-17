@@ -24,7 +24,7 @@ class InquiryController extends Controller
         ]);
 
         return back()
-            ->with('status', 'Terima kasih. Tim THORXup akan menghubungi Anda pada jam kerja.')
+            ->with('status', 'Terima kasih. Tim Throx Up akan menghubungi Anda pada jam kerja.')
             ->withFragment('kontak');
     }
 }

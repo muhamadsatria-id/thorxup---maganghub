@@ -160,20 +160,20 @@ Kategori:
 
 | ID | Nama |
 |---:|---|
-| 1 | Snare Drum |
-| 2 | Bass Drum |
-| 3 | Tenor & Quint |
-| 4 | Cymbal |
-| 5 | Kostum & Aksesori |
-| 6 | Mayoret & Color Guard |
+| 1 | Protective Coating |
+| 2 | Surface Treatment |
+| 3 | Corrosion Inhibitor |
+| 4 | Industrial Cleaner |
+| 5 | Metal Reconditioning |
+| 6 | Maintenance Support |
 
 Produk unggulan awal:
 
 | ID | Produk |
 |---:|---|
-| 1 | Snare Drum Marching 14 inci |
-| 2 | Bass Drum Marching 28 inci |
-| 3 | Tenor Quint Set |
+| 1 | TX-Protect EP 500 |
+| 2 | TX-Shield PU 720 |
+| 3 | TX-Surface Prep 110 |
 
 Jika ID berbeda karena database sudah pernah diubah, ambil ID terbaru melalui endpoint kategori atau produk.
 
@@ -343,9 +343,9 @@ Contoh respons (diringkas):
     "profile": {
       "id": 1,
       "name": "THORXup",
-      "vision": "Menjadi mitra drumband paling tepercaya di Indonesia...",
+      "vision": "Menjadi mitra tepercaya bagi industri manufaktur dan pemeliharaan mesin di Indonesia...",
       "mission": [
-        "Memproduksi perlengkapan drumband dengan bahan pilihan...",
+        "Menghadirkan produk perawatan dan perlindungan permukaan logam...",
         "Mendampingi tim dari pemilihan instrumen...",
         "Menjaga layanan purna jual yang cepat..."
       ],
@@ -394,10 +394,10 @@ Contoh respons:
   "data": {
     "id": 1,
     "name": "THORXup",
-    "vision": "Menjadi mitra drumband paling tepercaya di Indonesia...",
+    "vision": "Menjadi mitra tepercaya bagi industri manufaktur dan pemeliharaan mesin di Indonesia...",
     "mission": [
-      "Memproduksi perlengkapan drumband dengan bahan pilihan dan kontrol kualitas di setiap tahap.",
-      "Mendampingi tim dari pemilihan instrumen hingga penyesuaian kostum.",
+      "Menghadirkan produk perawatan, perlindungan, dan rekondisi permukaan logam.",
+      "Menyediakan protective coating, surface treatment, dan corrosion inhibitor.",
       "Menjaga layanan purna jual yang cepat, jelas, dan bisa diandalkan."
     ],
     "core_values": ["Presisi", "Konsistensi", "Kejujuran", "Kolaborasi"],
@@ -439,9 +439,9 @@ Contoh respons:
   "data": [
     {
       "id": 1,
-      "title": "Bunyi rapi. Tampilan berani. Siap panggung.",
-      "subtitle": "Perlengkapan drumband performa",
-      "description": "Snare, bass, tenor, cymbal, sampai kostum...",
+      "title": "Perlindungan permukaan logam untuk industri yang menuntut.",
+      "subtitle": "Perawatan logam industri",
+      "description": "Protective coating, surface treatment, corrosion inhibitor...",
       "image_url": "http://127.0.0.1:8000/images/hero.jpg",
       "cta_label": "Lihat katalog",
       "cta_url": "http://127.0.0.1:8000/products",
@@ -472,15 +472,15 @@ Contoh respons:
   "data": [
     {
       "id": 1,
-      "name": "Snare Drum",
-      "description": "Snare marching dengan artikulasi tegas untuk barisan depan.",
+      "name": "Protective Coating",
+      "description": "Lapisan pelindung untuk ketahanan korosi pada logam industri.",
       "products_count": 2,
       "sort_order": 1
     },
     {
       "id": 2,
-      "name": "Bass Drum",
-      "description": "Bass drum bervolume besar dengan nada rendah yang stabil.",
+      "name": "Surface Treatment",
+      "description": "Perlakuan permukaan untuk meningkatkan adhesi lapisan pada logam.",
       "products_count": 2,
       "sort_order": 2
     }
@@ -502,8 +502,8 @@ Respons berisi detail kategori dan jumlah produk aktif:
 {
   "data": {
     "id": 1,
-    "name": "Snare Drum",
-    "description": "Snare marching dengan artikulasi tegas untuk barisan depan.",
+    "name": "Protective Coating",
+    "description": "Lapisan pelindung untuk ketahanan korosi pada logam industri.",
     "products_count": 2,
     "sort_order": 1
   }
@@ -542,7 +542,7 @@ Query parameter:
 Contoh request dengan filter:
 
 ```http
-GET /api/v1/products?q=snare&category=1&featured=true&sort=name&per_page=6&page=1
+GET /api/v1/products?q=coating&category=1&featured=true&sort=name&per_page=6&page=1
 ```
 
 Contoh respons:
@@ -552,18 +552,18 @@ Contoh respons:
   "data": [
     {
       "id": 1,
-      "name": "Snare Drum Marching 14 inci",
+      "name": "TX-Protect EP 500",
       "category": {
         "id": 1,
-        "name": "Snare Drum",
-        "description": "Snare marching dengan artikulasi tegas untuk barisan depan.",
+        "name": "Protective Coating",
+        "description": "Lapisan pelindung untuk ketahanan korosi pada logam industri.",
         "sort_order": 1
       },
-      "description": "Snare dengan proyeksi tinggi dan artikulasi tegas, dirancang untuk barisan depan yang bergerak cepat.",
+      "description": "Protective coating epoxy dua komponen untuk baja karbon dengan ketahanan tinggi terhadap korosi dan degradasi permukaan.",
       "benefits": [
-        "Suara tajam dan konsisten di lapangan terbuka",
-        "Shell maple 8 ply dengan bearing edge presisi",
-        "Tension rod kuningan yang mudah disetel ulang"
+        "Adhesi optimal pada baja karbon yang telah dipreparasi",
+        "Ketahanan jangka panjang terhadap lembap dan bahan kimia industri",
+        "Cocok untuk aplikasi pada mesin dan struktur produksi"
       ],
       "details": [
         "Diameter 14 inci, kedalaman 6,5 inci",
@@ -578,8 +578,8 @@ Contoh respons:
     }
   ],
   "links": {
-    "first": "http://127.0.0.1:8000/api/v1/products?q=snare&category=1&featured=true&sort=name&per_page=6&page=1",
-    "last": "http://127.0.0.1:8000/api/v1/products?q=snare&category=1&featured=true&sort=name&per_page=6&page=1",
+    "first": "http://127.0.0.1:8000/api/v1/products?q=coating&category=1&featured=true&sort=name&per_page=6&page=1",
+    "last": "http://127.0.0.1:8000/api/v1/products?q=coating&category=1&featured=true&sort=name&per_page=6&page=1",
     "prev": null,
     "next": null
   },
@@ -608,14 +608,14 @@ Respons:
 {
   "data": {
     "id": 1,
-    "name": "Snare Drum Marching 14 inci",
+    "name": "TX-Protect EP 500",
     "category": {
       "id": 1,
-      "name": "Snare Drum",
-      "description": "Snare marching dengan artikulasi tegas untuk barisan depan.",
+      "name": "Protective Coating",
+      "description": "Lapisan pelindung untuk ketahanan korosi pada logam industri.",
       "sort_order": 1
     },
-    "description": "Snare dengan proyeksi tinggi...",
+    "description": "Protective coating dengan adhesi optimal...",
     "benefits": [],
     "details": [],
     "image_url": null,
@@ -652,7 +652,7 @@ Hanya berita yang sudah terbit (`published_at` tidak kosong dan tidak melewati w
 Contoh request:
 
 ```http
-GET /api/v1/news?q=snare&per_page=6
+GET /api/v1/news?q=coating&per_page=6
 ```
 
 Contoh respons:
@@ -662,8 +662,8 @@ Contoh respons:
   "data": [
     {
       "id": 1,
-      "title": "Kesalahan umum saat memilih snare drum untuk sekolah",
-      "excerpt": "Snare drum sering dipilih hanya berdasarkan harga, padahal ukuran dan konstruksi shell menentukan seberapa mudah tim menyetel nadanya.",
+      "title": "Memilih protective coating yang tepat untuk baja karbon",
+      "excerpt": "Ketahanan lapisan tidak hanya ditentukan oleh harga, tetapi oleh kesesuaian formulasi dengan kondisi operasional.",
       "image_url": null,
       "author": "Tim THORXup",
       "published_at": "2026-11-10T09:00:00+00:00",
@@ -692,14 +692,14 @@ Respons detail menyertakan `content` berupa HTML:
 {
   "data": {
     "id": 1,
-    "title": "Kesalahan umum saat memilih snare drum untuk sekolah",
-    "excerpt": "Snare drum sering dipilih hanya berdasarkan harga...",
+    "title": "Memilih protective coating yang tepat untuk baja karbon",
+    "excerpt": "Ketahanan lapisan ditentukan oleh formulasi...",
     "image_url": null,
     "author": "Tim THORXup",
     "published_at": "2026-11-10T09:00:00+00:00",
     "created_at": "2026-11-16T15:12:13+00:00",
     "updated_at": "2026-11-16T15:12:13+00:00",
-    "content": "<p>Snare drum sering dipilih hanya berdasarkan harga...</p>"
+    "content": "<p>Ketahanan lapisan ditentukan oleh formulasi...</p>"
   }
 }
 ```
@@ -722,14 +722,14 @@ Body:
 
 ```json
 {
-  "name": "SMA Negeri 1 Bandung",
-  "company": "SMA Negeri 1 Bandung",
+  "name": "PT Nusantara Manufacturing",
+  "company": "PT Nusantara Manufacturing",
   "email": "humas@example.test",
   "phone": "081234567890",
   "product_id": 1,
   "quantity": 8,
-  "subject": "Penawaran snare untuk tim drumband",
-  "message": "Kami ingin meminta penawaran untuk 8 unit snare drum sekolah."
+  "subject": "Penawaran coating untuk lini produksi",
+  "message": "Kami ingin meminta penawaran protective coating untuk lini produksi."
 }
 ```
 
@@ -754,15 +754,15 @@ Contoh respons sukses `201`:
   "message": "Terima kasih. Tim THORXup akan menghubungi Anda pada jam kerja.",
   "data": {
     "id": 4,
-    "name": "SMA Negeri 1 Bandung",
-    "company": "SMA Negeri 1 Bandung",
+    "name": "PT Nusantara Manufacturing",
+    "company": "PT Nusantara Manufacturing",
     "email": "humas@example.test",
     "phone": "081234567890",
     "product_id": 1,
     "product": {
       "id": 1,
-      "name": "Snare Drum Marching 14 inci",
-      "description": "Snare dengan proyeksi tinggi...",
+      "name": "TX-Protect EP 500",
+      "description": "Protective coating dengan adhesi optimal...",
       "benefits": [],
       "details": [],
       "image_url": null,
@@ -770,8 +770,8 @@ Contoh respons sukses `201`:
       "sort_order": 1
     },
     "quantity": 8,
-    "subject": "Penawaran snare untuk tim drumband",
-    "message": "Kami ingin meminta penawaran untuk 8 unit snare drum sekolah.",
+    "subject": "Penawaran coating untuk lini produksi",
+    "message": "Kami ingin meminta penawaran protective coating untuk lini produksi.",
     "status": "new",
     "status_label": "Baru",
     "created_at": "2026-11-17T02:09:12+00:00"
@@ -901,7 +901,7 @@ Contoh error `429`:
 | Categories | GET | `{{base_url}}/categories` | - |
 | Category detail | GET | `{{base_url}}/categories/{{category_id}}` | - |
 | Products | GET | `{{base_url}}/products?per_page=6` | - |
-| Product filter | GET | `{{base_url}}/products?q=snare&category={{category_id}}&featured=true&per_page=6` | - |
+| Product filter | GET | `{{base_url}}/products?q=coating&category={{category_id}}&featured=true&per_page=6` | - |
 | Product detail | GET | `{{base_url}}/products/{{product_id}}` | - |
 | News | GET | `{{base_url}}/news?per_page=6` | - |
 | News detail | GET | `{{base_url}}/news/{{news_id}}` | - |
@@ -972,7 +972,7 @@ Test detail:
 GET {{base_url}}/categories/{{category_id}}
 ```
 
-Expected: `200` dan `data.name = "Snare Drum"` untuk data seeder.
+Expected: `200` dan `data.name = "Protective Coating"` untuk data seeder.
 
 ### 11.6 Test produk
 
@@ -993,13 +993,13 @@ GET {{base_url}}/products/{{product_id}}
 Test filter:
 
 ```http
-GET {{base_url}}/products?q=snare&category=1&featured=true&sort=name&per_page=6
+GET {{base_url}}/products?q=coating&category=1&featured=true&sort=name&per_page=6
 ```
 
 Expected:
 
 - Hanya produk aktif.
-- `data` berisi produk yang namanya mengandung `snare`.
+- `data` berisi produk yang namanya mengandung `coating`.
 - `meta.per_page` bernilai `6`.
 
 Test pagination:
@@ -1057,14 +1057,14 @@ Body → pilih **raw** → **JSON**:
 
 ```json
 {
-  "name": "SMA Negeri 1 Bandung",
-  "company": "SMA Negeri 1 Bandung",
+  "name": "PT Nusantara Manufacturing",
+  "company": "PT Nusantara Manufacturing",
   "email": "humas@example.test",
   "phone": "081234567890",
   "product_id": 1,
   "quantity": 8,
-  "subject": "Penawaran snare untuk tim drumband",
-  "message": "Kami ingin meminta penawaran untuk 8 unit snare drum sekolah."
+  "subject": "Penawaran coating untuk lini produksi",
+  "message": "Kami ingin meminta penawaran protective coating untuk lini produksi."
 }
 ```
 
@@ -1077,7 +1077,7 @@ Expected body (diringkas):
   "message": "Terima kasih. Tim THORXup akan menghubungi Anda pada jam kerja.",
   "data": {
     "id": 4,
-    "name": "SMA Negeri 1 Bandung",
+    "name": "PT Nusantara Manufacturing",
     "email": "humas@example.test",
     "status": "new",
     "status_label": "Baru"
@@ -1235,13 +1235,13 @@ curl -s -X POST \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "SMA Negeri 1 Bandung",
+    "name": "PT Nusantara Manufacturing",
     "email": "humas@example.test",
     "phone": "081234567890",
     "product_id": 1,
     "quantity": 8,
-    "subject": "Penawaran snare",
-    "message": "Kami ingin meminta penawaran untuk 8 unit snare drum sekolah."
+    "subject": "Penawaran coating",
+    "message": "Kami ingin meminta penawaran protective coating untuk lini produksi."
   }' \
   http://127.0.0.1:8000/api/v1/inquiries
 ```

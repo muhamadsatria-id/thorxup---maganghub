@@ -1,25 +1,20 @@
 @php
     $profile ??= null;
     $brandName = $profile?->name ?? config('app.name', 'THORXup');
-    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perlengkapan drumband.') ?? '#kontak';
+    $whatsappUrl = $profile?->whatsappUrl('Halo '.$brandName.', saya ingin konsultasi perawatan permukaan logam industri.') ?? '#kontak';
 @endphp
 
 <section class="hero-surface">
     <div class="container-page grid items-center gap-12 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div class="hero-copy max-w-xl">
-            <p class="eyebrow text-brand-700">
-                <span class="rule"></span>
-                Perlengkapan drumband performa
-            </p>
-
             <h1 class="mt-6 text-[2.6rem] leading-[1.02] font-semibold tracking-[-0.03em] text-brand-950 sm:text-6xl">
                 Bunyi rapi.<br>
                 Tampilan berani.<br>
-                <span class="text-brand-600">Siap panggung.</span>
+                <span class="text-brand-600">Tahan lama.</span>
             </h1>
 
             <p class="mt-6 max-w-lg text-base leading-7 text-muted">
-                {{ $brandName }} memproduksi snare, bass, tenor, cymbal, hingga kostum drumband. Dibuat dengan bahan pilihan dan kontrol kualitas di setiap tahap, untuk tim yang tidak mau tampil setengah-setengah.
+                {{ $brandName }} menghadirkan protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri. Diformulasikan untuk ketahanan jangka panjang terhadap korosi, gesekan, dan degradasi permukaan.
             </p>
 
             <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -62,7 +57,7 @@
             <div class="relative overflow-hidden rounded-panel border border-white bg-brand-950 shadow-panel">
                 <img
                     src="{{ asset('images/hero.jpg') }}"
-                    alt="Perlengkapan drumband {{ $brandName }}"
+                    alt="Perawatan logam industri {{ $brandName }}"
                     width="738"
                     height="414"
                     class="h-[20rem] w-full object-cover sm:h-[25rem]"
@@ -78,7 +73,7 @@
 
                 <div class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-white">
                     <div>
-                        <p class="text-[0.65rem] tracking-[0.2em] text-brand-200 uppercase">Produksi in-house</p>
+                        <!-- <p class="text-[0.65rem] tracking-[0.2em] text-brand-200 uppercase">Produksi in-house</p> -->
                         <p class="mt-1 text-sm font-semibold">Diperiksa satu per satu sebelum kirim.</p>
                     </div>
                     <x-brand-mark class="hidden h-12 w-12 shrink-0 sm:block" />

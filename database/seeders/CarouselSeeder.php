@@ -11,27 +11,27 @@ class CarouselSeeder extends Seeder
     {
         $slides = [
             [
-                'title' => 'Bunyi rapi. Tampilan berani. Siap panggung.',
-                'subtitle' => 'Perlengkapan drumband performa',
-                'description' => 'Snare, bass, tenor, cymbal, sampai kostum. Dibuat dengan bahan pilihan dan kontrol kualitas di setiap tahap, untuk tim yang tidak mau tampil setengah-setengah.',
+                'title' => 'Perlindungan permukaan logam untuk industri yang menuntut.',
+                'subtitle' => '',
+                'description' => 'Protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri. Diformulasikan untuk ketahanan jangka panjang terhadap korosi, gesekan, dan degradasi permukaan.',
                 'image' => 'images/hero.jpg',
                 'cta_label' => 'Lihat katalog',
                 'cta_url' => '/products',
                 'sort_order' => 1,
             ],
             [
-                'title' => 'Dibuat untuk tim yang bergerak cepat.',
-                'subtitle' => 'Produksi in-house',
-                'description' => 'Setiap unit dirakit dan diperiksa di workshop Bandung. Dari rangka sampai finishing, tidak ada tahap yang dilewati.',
+                'title' => 'Formulasi presisi untuk ketahanan jangka panjang.',
+                'subtitle' => '',
+                'description' => 'Produk Throx Up memastikan adhesi optimal pada baja karbon, stainless steel, aluminium, dan logam non-ferrous, bahkan pada kondisi operasional paling menuntut.',
                 'image' => null,
-                'cta_label' => 'Lihat proses kami',
+                'cta_label' => 'Pelajari teknologi kami',
                 'cta_url' => '/about',
                 'sort_order' => 2,
             ],
             [
-                'title' => 'Warna tim Anda, identitas kami.',
-                'subtitle' => 'Kustom penuh',
-                'description' => 'Warna, emblem, ukuran, dan detail performa bisa disesuaikan. Ceritakan brief tim Anda, kami bantu susun spesifikasinya.',
+                'title' => 'Dukungan teknis untuk tim maintenance industri.',
+                'subtitle' => '',
+                'description' => 'Bersama PT Trit Indonesia, kami mendampingi program perawatan preventif dan perlindungan aset mesin industri di seluruh Indonesia dengan standar kualitas terjamin.',
                 'image' => null,
                 'cta_label' => 'Mulai konsultasi',
                 'cta_url' => '/contact',
@@ -45,5 +45,14 @@ class CarouselSeeder extends Seeder
                 [...$slide, 'is_active' => true],
             );
         }
+
+        // Hapus hanya slide demo lama; jangan menyentuh slide buatan admin.
+        Carousel::query()
+            ->whereIn('title', [
+                'Bunyi rapi. Tampilan berani. Siap panggung.',
+                'Dibuat untuk tim yang bergerak cepat.',
+                'Warna tim Anda, identitas kami.',
+            ])
+            ->delete();
     }
 }

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'THORXup').' — Perlengkapan Drumband yang Siap Panggung')
-@section('meta_description', 'THORXup memproduksi snare, bass, tenor, cymbal, kostum, dan perlengkapan mayoret drumband dengan bahan pilihan serta kontrol kualitas di setiap tahap.')
+@section('title', config('app.name', 'THORXup').' — Solusi Perawatan Permukaan Logam Industri')
+@section('meta_description', 'Throx Up menghadirkan protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri untuk ketahanan maksimal pada logam.')
 
 @php
     $brandName = trim($profile?->name ?? config('app.name', 'THORXup'));
 
     $heroSlides = $carousels->map(function ($slide) {
         return [
-            'badge' => $slide->subtitle ?: 'Perlengkapan Drumband',
+            'badge' => $slide->subtitle ?: 'Perawatan Logam Industri',
             'title' => $slide->title,
             'description' => $slide->description,
             'image' => $slide->imageUrl() ?: asset('images/hero.jpg'),
@@ -19,9 +19,9 @@
 
     if ($heroSlides->isEmpty()) {
         $heroSlides = collect([[
-            'badge' => 'Perlengkapan Drumband',
-            'title' => 'Bunyi rapi. Tampilan berani. Siap panggung.',
-            'description' => 'Snare, bass, tenor, cymbal, sampai kostum. Dibuat dengan bahan pilihan dan kontrol kualitas di setiap tahap, untuk tim yang tidak mau tampil setengah-setengah.',
+            'badge' => 'Perawatan Logam Industri',
+            'title' => 'Perlindungan permukaan logam untuk industri yang menuntut.',
+            'description' => 'Protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri untuk ketahanan jangka panjang terhadap korosi, gesekan, dan degradasi permukaan.',
             'image' => asset('images/hero.jpg'),
             'cta_label' => 'Lihat Katalog',
             'cta_url' => route('products'),
@@ -32,13 +32,13 @@
         $name = mb_strtolower((string) $name);
 
         return match (true) {
-            str_contains($name, 'snare') => 'music_note',
-            str_contains($name, 'bass') => 'surround_sound',
-            str_contains($name, 'tenor'), str_contains($name, 'quint') => 'queue_music',
-            str_contains($name, 'cymbal') => 'album',
-            str_contains($name, 'kostum'), str_contains($name, 'aksesori') => 'checkroom',
-            str_contains($name, 'mayoret'), str_contains($name, 'guard') => 'flag',
-            default => 'music_note',
+            str_contains($name, 'coating') => 'layers',
+            str_contains($name, 'treatment') => 'gradient',
+            str_contains($name, 'inhibitor') => 'shield',
+            str_contains($name, 'cleaner') => 'cleaning_services',
+            str_contains($name, 'reconditioning') => 'build',
+            str_contains($name, 'maintenance') => 'engineering',
+            default => 'science',
         };
     };
 
@@ -52,7 +52,7 @@
     $productCards = $products->map(function ($product) use ($categoryIcon) {
         return [
             'name' => $product->name,
-            'category' => $product->category?->name ?? 'Perlengkapan Drumband',
+            'category' => $product->category?->name ?? 'Perawatan Logam Industri',
             'url' => route('products.detail', $product),
             'image' => $product->imageUrl(),
             'icon' => $categoryIcon($product->category?->name),
@@ -85,18 +85,18 @@
 
     if ($missions === []) {
         $missions = [
-            'Memproduksi perlengkapan drumband dengan bahan pilihan dan kontrol kualitas di setiap tahap.',
-            'Mendampingi tim dari pemilihan instrumen hingga penyesuaian kostum.',
-            'Menjaga layanan purna jual yang cepat, jelas, dan bisa diandalkan.',
+            'Menghadirkan produk perawatan, perlindungan, dan rekondisi permukaan logam yang diformulasikan untuk ketahanan jangka panjang.',
+            'Menyediakan protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri.',
+            'Mendukung program perawatan preventif dan perlindungan aset mesin industri di seluruh Indonesia.',
         ];
     }
 
     $coreValues = $profile?->coreValueList() ?? [];
     $pillarMeta = [
-        ['icon' => 'verified_user', 'description' => 'Setiap unit melewati pemeriksaan bahan, rangka, dan finishing sebelum dikirim.'],
-        ['icon' => 'precision_manufacturing', 'description' => 'Ukuran, nada, dan detail pengerjaan dijaga agar konsisten dari unit pertama sampai terakhir.'],
-        ['icon' => 'shield', 'description' => 'Dirancang untuk latihan rutin, perjalanan, dan performa di lapangan terbuka.'],
-        ['icon' => 'handshake', 'description' => 'Komunikasi jelas dari brief awal, produksi, pengiriman, sampai penyesuaian setelah tiba.'],
+        ['icon' => 'verified_user', 'description' => 'Setiap formulasi diuji untuk adhesi dan ketahanan sebelum didistribusikan.'],
+        ['icon' => 'precision_manufacturing', 'description' => 'Kualitas setiap batch dijaga agar konsisten dari produksi pertama sampai pengiriman berikutnya.'],
+        ['icon' => 'shield', 'description' => 'Dirancang untuk kondisi operasional yang paling menuntut di lantai produksi.'],
+        ['icon' => 'handshake', 'description' => 'Pendampingan teknis dari evaluasi kebutuhan, aplikasi, sampai evaluasi hasil di lapangan.'],
     ];
 
     $pillars = collect($coreValues)->values()->map(function (string $value, int $index) use ($pillarMeta) {
@@ -109,16 +109,16 @@
 
     if ($pillars->isEmpty()) {
         $pillars = collect([
-            ['title' => 'Presisi', 'icon' => 'verified_user', 'description' => 'Setiap unit melewati pemeriksaan bahan, rangka, dan finishing sebelum dikirim.'],
-            ['title' => 'Konsistensi', 'icon' => 'precision_manufacturing', 'description' => 'Ukuran, nada, dan detail pengerjaan dijaga agar konsisten dari unit pertama sampai terakhir.'],
-            ['title' => 'Kejujuran', 'icon' => 'shield', 'description' => 'Dirancang untuk latihan rutin, perjalanan, dan performa di lapangan terbuka.'],
-            ['title' => 'Kolaborasi', 'icon' => 'handshake', 'description' => 'Komunikasi jelas dari brief awal, produksi, pengiriman, sampai penyesuaian setelah tiba.'],
+            ['title' => 'Inovasi', 'icon' => 'verified_user', 'description' => 'Setiap formulasi diuji untuk adhesi dan ketahanan sebelum didistribusikan.'],
+            ['title' => 'Ketahanan', 'icon' => 'precision_manufacturing', 'description' => 'Kualitas setiap batch dijaga agar konsisten dari produksi pertama sampai pengiriman berikutnya.'],
+            ['title' => 'Presisi', 'icon' => 'shield', 'description' => 'Dirancang untuk kondisi operasional yang paling menuntut di lantai produksi.'],
+            ['title' => 'Kolaborasi', 'icon' => 'handshake', 'description' => 'Pendampingan teknis dari evaluasi kebutuhan, aplikasi, sampai evaluasi hasil di lapangan.'],
         ]);
     }
 
     $stats = [
         ['value' => '100%', 'title' => 'Quality Control', 'description' => 'Diperiksa sebelum kirim'],
-        ['value' => '10+', 'title' => 'Lini Produk', 'description' => 'Siap untuk kebutuhan tim'],
+        ['value' => '10+', 'title' => 'Lini Produk', 'description' => 'Siap untuk kebutuhan industri'],
         ['value' => '48-Jam', 'title' => 'Respons Cepat', 'description' => 'Penawaran pada jam kerja'],
         ['value' => 'QC', 'title' => 'Standar Produksi', 'description' => 'Kontrol di setiap tahap'],
     ];
@@ -126,10 +126,10 @@
     $socialLinks = collect($profile?->socialLinks() ?? []);
     $marketplaceLinks = $socialLinks->keyBy('label');
     $marketplaces = collect([
-        ['label' => 'Tokopedia', 'icon' => 'storefront', 'description' => 'Toko resmi • Perlengkapan & aksesori drumband'],
-        ['label' => 'Shopee', 'icon' => 'shopping_bag', 'description' => 'Outlet resmi • Instrumen & kostum performa'],
+        ['label' => 'Tokopedia', 'icon' => 'storefront', 'description' => 'Toko resmi • Produk perawatan logam'],
+        ['label' => 'Shopee', 'icon' => 'shopping_bag', 'description' => 'Outlet resmi • Coating & inhibitor'],
         ['label' => 'TikTok Shop', 'icon' => 'play_circle', 'description' => 'Konsultasi live • Checkout langsung'],
-        ['label' => 'Bukalapak', 'icon' => 'store', 'description' => 'Pengadaan instansi • Perlengkapan tim'],
+        ['label' => 'Bukalapak', 'icon' => 'store', 'description' => 'Pengadaan instansi • Kebutuhan industri'],
         ['label' => 'Lazada', 'icon' => 'verified', 'description' => 'Distribusi resmi • Stok regional'],
     ])->map(function (array $marketplace) use ($marketplaceLinks) {
         $key = $marketplace['label'] === 'TikTok Shop' ? 'TikTok' : $marketplace['label'];
@@ -249,18 +249,18 @@
                     <div class="flex flex-col gap-space-xs max-w-2xl">
                         <span class="font-label-spec text-label-spec uppercase tracking-wider text-secondary font-bold">- KATEGORI PRODUK</span>
                         <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">
-                            Kategori Perlengkapan Drumband
+                            Kategori Perawatan Logam Industri
                         </h2>
                     </div>
                     <p class="font-body-md text-body-md text-on-surface-variant max-w-md text-left md:text-right">
-                        Telusuri lini instrumen, kostum, dan perlengkapan performa yang dirancang untuk bekerja sebagai satu sistem.
+                        Telusuri lini protective coating, surface treatment, corrosion inhibitor, dan pembersih permukaan industri yang dirancang untuk bekerja sebagai satu sistem.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter auto-rows-[220px]">
                     {{-- Category 01: tall editorial card --}}
                     <a href="{{ $c1 ? route('categories.detail', $c1) : route('categories') }}" class="group relative lg:col-span-4 row-span-2 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-inverse-surface border border-outline-variant/30">
-                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c1?->name ?? 'Perlengkapan drumband' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c1?->name ?? 'Perawatan logam industri' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
 
                         <div class="relative z-10 flex items-center justify-between w-full">
@@ -274,8 +274,8 @@
                         <div class="relative z-10 flex items-end justify-between w-full pt-space-xl">
                             <div class="max-w-[70%]">
                                 <span class="text-secondary-fixed text-label-spec uppercase tracking-widest font-semibold">Kategori 01</span>
-                                <h3 class="font-headline-lg text-headline-lg text-white font-extrabold leading-tight mt-0.5">{{ $c1?->name ?? 'Snare Drum' }}</h3>
-                                <p class="font-body-sm text-body-sm text-surface-container-highest mt-space-xs line-clamp-2 hidden sm:block">{{ $c1?->description ?? 'Instrumen inti dengan artikulasi tegas untuk barisan depan.' }}</p>
+                                <h3 class="font-headline-lg text-headline-lg text-white font-extrabold leading-tight mt-0.5">{{ $c1?->name ?? 'Protective Coating' }}</h3>
+                                <p class="font-body-sm text-body-sm text-surface-container-highest mt-space-xs line-clamp-2 hidden sm:block">{{ $c1?->description ?? 'Lapisan pelindung untuk ketahanan korosi pada logam industri.' }}</p>
                             </div>
                             <div class="w-12 h-12 rounded-full bg-white text-on-surface flex items-center justify-center shadow-lg group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 transition-all">
                                 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
@@ -286,13 +286,13 @@
                     {{-- Category 02: color block --}}
                     <a href="{{ $c2 ? route('categories.detail', $c2) : route('categories') }}" class="group relative lg:col-span-4 row-span-1 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-secondary-fixed border border-outline-variant/30 text-on-secondary-fixed">
                         <div class="flex items-center justify-between w-full">
-                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-on-secondary-fixed/10 border border-on-secondary-fixed/15 text-on-secondary-fixed font-label-spec text-label-spec uppercase tracking-wider font-bold">Ritme</span>
+                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-on-secondary-fixed/10 border border-on-secondary-fixed/15 text-on-secondary-fixed font-label-spec text-label-spec uppercase tracking-wider font-bold">Preparasi</span>
                             <span class="material-symbols-outlined text-on-secondary-fixed text-[20px]">settings</span>
                         </div>
                         <div class="flex items-end justify-between w-full mt-auto">
                             <div>
                                 <span class="text-on-secondary-fixed-variant text-label-spec uppercase tracking-wider font-semibold">Kategori 02</span>
-                                <h3 class="font-headline-md text-headline-md text-on-secondary-fixed font-extrabold leading-tight">{{ $c2?->name ?? 'Bass Drum' }}</h3>
+                                <h3 class="font-headline-md text-headline-md text-on-secondary-fixed font-extrabold leading-tight">{{ $c2?->name ?? 'Surface Treatment' }}</h3>
                             </div>
                             <div class="w-10 h-10 rounded-full bg-on-secondary-fixed text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -302,7 +302,7 @@
 
                     {{-- Category 03: photographic card --}}
                     <a href="{{ $c3 ? route('categories.detail', $c3) : route('categories') }}" class="group relative lg:col-span-4 row-span-1 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-inverse-surface border border-outline-variant/30 text-white">
-                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c3?->name ?? 'Perlengkapan drumband' }}" class="absolute inset-0 w-full h-full object-cover object-left transition-transform duration-500 group-hover:scale-105">
+                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c3?->name ?? 'Perawatan logam industri' }}" class="absolute inset-0 w-full h-full object-cover object-left transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
                         <div class="relative z-10 flex items-center justify-between w-full">
                             <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-label-spec text-label-spec uppercase tracking-wider font-bold">Keandalan</span>
@@ -311,7 +311,7 @@
                         <div class="relative z-10 flex items-end justify-between w-full mt-auto">
                             <div>
                                 <span class="text-secondary-fixed text-label-spec uppercase tracking-wider font-semibold">Kategori 03</span>
-                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c3?->name ?? 'Tenor & Quint' }}</h3>
+                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c3?->name ?? 'Corrosion Inhibitor' }}</h3>
                             </div>
                             <div class="w-10 h-10 rounded-full bg-white text-on-surface flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -322,13 +322,13 @@
                     {{-- Category 04: tinted card --}}
                     <a href="{{ $c4 ? route('categories.detail', $c4) : route('categories') }}" class="group relative lg:col-span-4 row-span-1 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container">
                         <div class="flex items-center justify-between w-full">
-                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-spec text-label-spec uppercase tracking-wider font-bold">Visual</span>
+                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-spec text-label-spec uppercase tracking-wider font-bold">Adhesi</span>
                             <span class="material-symbols-outlined text-outline text-[20px]">height</span>
                         </div>
                         <div class="flex items-end justify-between w-full mt-auto">
                             <div>
                                 <span class="text-outline text-label-spec uppercase tracking-wider font-semibold">Kategori 04</span>
-                                <h3 class="font-headline-md text-headline-md text-primary font-extrabold leading-tight">{{ $c4?->name ?? 'Cymbal' }}</h3>
+                                <h3 class="font-headline-md text-headline-md text-primary font-extrabold leading-tight">{{ $c4?->name ?? 'Industrial Cleaner' }}</h3>
                             </div>
                             <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md group-hover:bg-primary-container group-hover:scale-105 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -338,16 +338,16 @@
 
                     {{-- Category 05: photographic card --}}
                     <a href="{{ $c5 ? route('categories.detail', $c5) : route('categories') }}" class="group relative lg:col-span-4 row-span-1 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-inverse-surface border border-outline-variant/30 text-white">
-                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c5?->name ?? 'Perlengkapan drumband' }}" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-500 group-hover:scale-105">
+                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c5?->name ?? 'Perawatan logam industri' }}" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
                         <div class="relative z-10 flex items-center justify-between w-full">
-                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-label-spec text-label-spec uppercase tracking-wider font-bold">Performa</span>
+                            <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-label-spec text-label-spec uppercase tracking-wider font-bold">Daya Tahan</span>
                             <span class="material-symbols-outlined text-white text-[20px]">hardware</span>
                         </div>
                         <div class="relative z-10 flex items-end justify-between w-full mt-auto">
                             <div>
                                 <span class="text-secondary-fixed text-label-spec uppercase tracking-wider font-semibold">Kategori 05</span>
-                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c5?->name ?? 'Kostum & Aksesori' }}</h3>
+                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c5?->name ?? 'Metal Reconditioning' }}</h3>
                             </div>
                             <div class="w-10 h-10 rounded-full bg-white text-on-surface flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -357,7 +357,7 @@
 
                     {{-- Category 06: wide photographic card --}}
                     <a href="{{ $c6 ? route('categories.detail', $c6) : route('categories') }}" class="group relative lg:col-span-7 row-span-1 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-space-lg bg-inverse-surface border border-outline-variant/30 text-white">
-                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c6?->name ?? 'Perlengkapan drumband' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                        <img src="{{ asset('images/hero.jpg') }}" alt="{{ $c6?->name ?? 'Perawatan logam industri' }}" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
                         <div class="relative z-10 flex items-center justify-between w-full">
                             <span class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-label-spec text-label-spec uppercase tracking-wider font-bold">Signature</span>
@@ -366,7 +366,7 @@
                         <div class="relative z-10 flex items-end justify-between w-full mt-auto">
                             <div class="max-w-md">
                                 <span class="text-secondary-fixed text-label-spec uppercase tracking-wider font-semibold">Kategori 06</span>
-                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c6?->name ?? 'Mayoret & Color Guard' }}</h3>
+                                <h3 class="font-headline-md text-headline-md text-white font-bold leading-tight">{{ $c6?->name ?? 'Maintenance Support' }}</h3>
                             </div>
                             <div class="w-11 h-11 rounded-full bg-white text-on-surface flex items-center justify-center shadow-md group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 transition-all">
                                 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
@@ -402,10 +402,10 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-xl">
                     <div class="flex flex-col gap-space-xs">
                         <span class="font-label-spec text-label-spec uppercase tracking-wider text-secondary font-bold">- KOLEKSI PRODUK</span>
-                        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">Produk Drumband Terbaru</h2>
+                        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">Produk Perawatan Logam Terbaru</h2>
                     </div>
                     <p class="font-body-md text-body-md text-on-surface-variant max-w-md text-left md:text-right">
-                        Instrumen dan perlengkapan performa yang siap masuk ke formasi tim Anda, dengan opsi warna dan detail kustom.
+                        Formulasi kimia permukaan yang siap mendukung program perawatan preventif dan perlindungan aset mesin industri Anda.
                     </p>
                 </div>
 
@@ -465,10 +465,10 @@
                 <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                     <div class="w-12 h-1 bg-secondary-container rounded-full mb-space-lg"></div>
                     <blockquote class="font-display-hero text-headline-lg-mobile md:text-headline-lg text-on-primary font-extrabold leading-snug tracking-tight">
-                        “Dibangun untuk Keandalan Tanpa Kompromi. Saat latihan menuntut konsistensi dan panggung tidak memberi ruang untuk ragu, THORXup menyiapkan perlengkapan yang bekerja untuk tim Anda.”
+                        “Dibangun untuk Ketahanan Tanpa Kompromi. Saat produksi menuntut konsistensi dan degradasi permukaan tidak bisa diabaikan, Throx Up menyiapkan formulasi yang melindungi aset mesin Anda.”
                     </blockquote>
                     <p class="font-body-md text-body-md text-secondary-fixed-dim mt-space-md max-w-xl">
-                        Setiap instrumen, kostum, dan aksesori melewati pemeriksaan bahan, perakitan, dan finishing sebelum masuk ke tangan tim Anda.
+                        Setiap produk melewati pemeriksaan formulasi, adhesi, dan ketahanan sebelum sampai ke fasilitas Anda.
                     </p>
                 </div>
 
@@ -491,11 +491,11 @@
 
                 <div class="flex items-center justify-between mb-space-2xl">
                     <div class="flex flex-col gap-space-xs">
-                        <span class="font-label-spec text-label-spec text-primary tracking-widest uppercase font-bold">KABAR WORKSHOP • INSIGHT</span>
+                        <span class="font-label-spec text-label-spec text-primary tracking-widest uppercase font-bold">KABAR INDUSTRI • INSIGHT</span>
                         <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">Berita &amp; Insight Terbaru</h2>
                     </div>
                     <p class="font-body-md text-body-md text-on-surface-variant max-w-md text-left md:text-right hidden sm:block">
-                        Catatan dari lantai produksi, tips perawatan, dan hal-hal yang perlu diketahui sebelum mengunci jadwal tim.
+                        Catatan dari lantai produksi, tips perawatan permukaan, dan insight untuk tim maintenance industri.
                     </p>
                 </div>
 
@@ -530,7 +530,7 @@
                     @empty
                         <div class="md:col-span-3 rounded-2xl bg-surface-container-lowest p-space-xl text-center shadow-sm">
                             <p class="font-headline-sm text-headline-sm text-on-surface font-bold">Belum ada kabar baru.</p>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Ikuti update jadwal produksi dan tips perawatan dari workshop kami.</p>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Ikuti update produk dan tips perawatan permukaan logam dari tim kami.</p>
                         </div>
                     @endforelse
                 </div>
@@ -550,10 +550,10 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
                     <div class="flex flex-col gap-space-xs max-w-2xl">
                         <span class="font-label-spec text-label-spec text-primary tracking-widest uppercase font-bold">TENTANG THORXUP</span>
-                        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">Membangun Fondasi Performa Drumband</h2>
+                        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-extrabold tracking-tight">Membangun Fondasi Perlindungan Logam Industri</h2>
                     </div>
                     <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-                        Berbasis di Bandung, {{ $brandName }} memproduksi perlengkapan drumband untuk sekolah, komunitas, dan tim performa yang membutuhkan hasil rapi dan tahan lama.
+                        Bersama PT Trit Indonesia, {{ $brandName }} menghadirkan produk perawatan dan perlindungan permukaan logam untuk kebutuhan industri manufaktur dan pemeliharaan mesin di seluruh Indonesia.
                     </p>
                 </div>
 
@@ -563,7 +563,7 @@
                             <div class="w-12 h-1 bg-secondary-fixed rounded-full"></div>
                             <h3 class="font-headline-md text-headline-md text-on-primary font-extrabold">Visi Kami</h3>
                             <blockquote class="font-body-lg text-body-lg text-secondary-fixed-dim leading-relaxed font-medium italic mt-space-sm">
-                                “{{ $profile?->vision ?: 'Menjadi mitra drumband paling tepercaya di Indonesia — tempat sekolah, komunitas, dan tim performa menemukan perlengkapan yang rapi, tahan lama, dan siap panggung.' }}”
+                                “{{ $profile?->vision ?: 'Menjadi mitra tepercaya bagi industri manufaktur dan pemeliharaan mesin di Indonesia melalui solusi kimia permukaan logam yang inovatif, andal, dan berkelanjutan.' }}”
                             </blockquote>
                         </div>
                         <div class="mt-space-xl pt-space-md border-t border-primary-container flex items-center gap-space-sm text-secondary-fixed-dim font-label-spec text-label-spec uppercase tracking-wider font-semibold">
@@ -616,9 +616,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
                     <div class="lg:col-span-5 flex flex-col justify-between bg-primary text-on-primary p-space-xl rounded-[2rem] shadow-md">
                         <div>
-                            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary font-extrabold tracking-tight">Dapatkan Penawaran Perlengkapan Tim</h2>
+                            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary font-extrabold tracking-tight">Dapatkan Penawaran Solusi Perawatan Logam</h2>
                             <p class="font-body-md text-body-md text-on-primary-container mt-space-sm">
-                                Apakah Anda membutuhkan instrumen baru, kostum performa, atau paket lengkap untuk satu tim, tim kami akan membantu menyusun spesifikasi dan estimasi yang sesuai.
+                                Apakah Anda membutuhkan protective coating, corrosion inhibitor, atau formulasi surface treatment untuk fasilitas Anda, tim kami akan membantu menyusun spesifikasi dan estimasi yang sesuai.
                             </p>
 
                             <div class="mt-space-xl flex flex-col gap-space-lg">
@@ -627,7 +627,7 @@
                                         <span class="material-symbols-outlined text-[24px]">location_on</span>
                                     </div>
                                     <div>
-                                        <h4 class="font-label-lg text-label-lg text-on-primary font-bold">Workshop Utama</h4>
+                                        <h4 class="font-label-lg text-label-lg text-on-primary font-bold">Kantor Pusat</h4>
                                         <p class="font-body-sm text-body-sm text-on-primary-container mt-0.5">
                                             {!! nl2br(e($profile?->alamat ?? 'Jl. Cigondewah Kaler No. 24, Bandung, Jawa Barat 40214')) !!}
                                         </p>
@@ -639,7 +639,7 @@
                                         <span class="material-symbols-outlined text-[24px]">call</span>
                                     </div>
                                     <div>
-                                        <h4 class="font-label-lg text-label-lg text-on-primary font-bold">Hotline Konsultasi</h4>
+                                        <h4 class="font-label-lg text-label-lg text-on-primary font-bold">Hotline Teknis</h4>
                                         <p class="font-body-sm text-body-sm text-on-primary-container mt-0.5">
                                             @if ($profile?->phone)
                                                 <a href="{{ $profile->phoneUrl() }}" class="hover:text-on-primary transition-colors">{{ $profile->phone }}</a>
@@ -727,7 +727,7 @@
                                         id="contact-email"
                                         name="email"
                                         value="{{ old('email') }}"
-                                        placeholder="Contoh: rani@sekolah.id"
+                                        placeholder="Contoh: rani@perusahaan.id"
                                         required
                                         autocomplete="email"
                                         type="email"
@@ -757,13 +757,13 @@
                                 </div>
 
                                 <div class="flex flex-col gap-space-xs">
-                                    <label class="font-label-sm text-label-sm text-on-surface font-semibold" for="contact-company">Nama Tim / Instansi</label>
+                                    <label class="font-label-sm text-label-sm text-on-surface font-semibold" for="contact-company">Nama Perusahaan / Instansi</label>
                                     <input
                                         class="w-full px-space-md py-space-sm rounded-2xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3949ab] transition-all @error('company') shadow-[0_0_0_2px_#e11d48] @enderror"
                                         id="contact-company"
                                         name="company"
                                         value="{{ old('company') }}"
-                                        placeholder="Contoh: SMA Negeri 1 Bandung"
+                                        placeholder="Contoh: PT Nusantara Manufacturing"
                                         autocomplete="organization"
                                         type="text"
                                     >
@@ -780,7 +780,7 @@
                                     id="contact-subject"
                                     name="subject"
                                     value="{{ old('subject') }}"
-                                    placeholder="Contoh: Penawaran 8 snare & 2 bass drum"
+                                    placeholder="Contoh: Penawaran protective coating untuk lini produksi"
                                     required
                                     type="text"
                                 >
@@ -790,12 +790,12 @@
                             </div>
 
                             <div class="flex flex-col gap-space-xs">
-                                <label class="font-label-sm text-label-sm text-on-surface font-semibold" for="contact-message">Spesifikasi / Kebutuhan Tim *</label>
+                                <label class="font-label-sm text-label-sm text-on-surface font-semibold" for="contact-message">Spesifikasi / Kebutuhan Fasilitas *</label>
                                 <textarea
                                     class="w-full px-space-md py-space-sm rounded-2xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3949ab] transition-all @error('message') shadow-[0_0_0_2px_#e11d48] @enderror"
                                     id="contact-message"
                                     name="message"
-                                    placeholder="Ceritakan jumlah personel, instrumen yang dibutuhkan, warna tim, dan tenggat waktu."
+                                    placeholder="Ceritakan jenis logam, kondisi operasional, dan tantangan degradasi permukaan yang Anda hadapi."
                                     required
                                     rows="4"
                                 >{{ old('message') }}</textarea>
@@ -829,7 +829,7 @@
                     </div>
                     <div class="flex items-center gap-space-md">
                         <p class="font-body-md text-body-md text-on-surface-variant max-w-md hidden md:block">
-                            Temukan perlengkapan resmi {{ $brandName }} dan ikuti pembaruan produk melalui marketplace resmi kami.
+                            Temukan produk resmi {{ $brandName }} dan ikuti pembaruan formulasi melalui kanal resmi kami.
                         </p>
                         <div class="flex items-center gap-space-xs shrink-0">
                             <button aria-label="Slide Sebelumnya" class="w-12 h-12 rounded-full border border-outline-variant/30 bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center justify-center shadow-sm" id="slideLeftBtn" type="button" onclick="const el=document.getElementById('connect-cards-track'); if(el) el.scrollBy({left: -380, behavior: 'smooth'});">

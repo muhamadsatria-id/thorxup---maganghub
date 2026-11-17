@@ -13,40 +13,40 @@ class InquirySeeder extends Seeder
         // Contoh pesan masuk untuk mengisi panel admin. Hapus sebelum publikasi.
         $inquiries = [
             [
-                'name' => 'SMA Negeri 1 Bandung',
-                'company' => 'SMA Negeri 1 Bandung',
-                'email' => 'humas@smansa-bandung.example',
+                'name' => 'PT Nusantara Manufacturing',
+                'company' => 'PT Nusantara Manufacturing',
+                'email' => 'maintenance@nusantara-mfg.example',
                 'phone' => '081234567801',
-                'product' => 'Snare Drum Marching 14 inci',
-                'quantity' => 8,
-                'subject' => 'Penawaran snare untuk tim drumband sekolah',
-                'message' => 'Kami ingin memesan 8 snare untuk tim drumband sekolah. Mohon informasi spesifikasi, waktu produksi, dan estimasi biaya.',
+                'product' => 'TX-Protect EP 500',
+                'quantity' => 20,
+                'subject' => 'Penawaran protective coating untuk lini produksi',
+                'message' => 'Kami ingin memesan 20 kg protective coating untuk perlindungan baja karbon di lini produksi. Mohon informasi spesifikasi teknis, cakupan aplikasi, dan estimasi biaya.',
                 'status' => 'new',
                 'admin_notes' => null,
             ],
             [
-                'name' => 'Komunitas Drumband Cimahi',
-                'company' => 'Komunitas Drumband Cimahi',
-                'email' => 'kontak@drumcimahi.example',
+                'name' => 'PT Trit Indonesia',
+                'company' => 'PT Trit Indonesia',
+                'email' => 'engineering@trit-indonesia.example',
                 'phone' => '081234567802',
-                'product' => 'Kostum Drumband Performa',
-                'quantity' => 24,
-                'subject' => 'Kostum performa warna navy dan kuningan',
-                'message' => 'Kami butuh 24 set kostum untuk lomba bulan depan. Bisa minta contoh bahan dan formulir ukuran?',
+                'product' => 'TX-Corr Inhib 330',
+                'quantity' => 50,
+                'subject' => 'Corrosion inhibitor untuk sistem sirkulasi pabrik',
+                'message' => 'Kami membutuhkan 50 liter corrosion inhibitor untuk sistem sirkulasi pendingin. Bisa dikirimkan rekomendasi dosis dan data kompatibilitas material?',
                 'status' => 'read',
-                'admin_notes' => 'Sudah dikirim katalog bahan melalui WhatsApp.',
+                'admin_notes' => 'Sudah dikirim lembar data teknis melalui email.',
             ],
             [
                 'name' => 'Pak Andi',
                 'company' => 'Yayasan Bina Prestasi',
                 'email' => 'andi@binaprestasi.example',
                 'phone' => '081234567803',
-                'product' => 'Bass Drum Marching 28 inci',
-                'quantity' => 2,
-                'subject' => 'Bass drum untuk latihan rutin',
-                'message' => 'Butuh 2 bass drum untuk latihan rutin. Apakah tersedia harness dan penutup hujan?',
+                'product' => 'TX-Surface Prep 110',
+                'quantity' => 10,
+                'subject' => 'Surface treatment untuk preparasi permukaan logam',
+                'message' => 'Butuh 10 liter surface treatment untuk preparasi permukaan sebelum pelapisan. Apakah tersedia panduan aplikasi dan estimasi waktu pengiriman?',
                 'status' => 'replied',
-                'admin_notes' => 'Penawaran sudah dikirim. Menunggu konfirmasi jadwal produksi.',
+                'admin_notes' => 'Penawaran sudah dikirim. Menunggu konfirmasi jadwal pengiriman.',
             ],
         ];
 
@@ -61,5 +61,14 @@ class InquirySeeder extends Seeder
                 $inquiry,
             );
         }
+
+        // Hapus hanya pesan demo lama; jangan menyentuh pesan masuk asli.
+        Inquiry::query()
+            ->whereIn('subject', [
+                'Penawaran snare untuk tim drumband sekolah',
+                'Kostum performa warna navy dan kuningan',
+                'Bass drum untuk latihan rutin',
+            ])
+            ->delete();
     }
 }

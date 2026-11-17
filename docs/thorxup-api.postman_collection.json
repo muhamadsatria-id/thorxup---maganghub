@@ -145,7 +145,7 @@
                 "value": "application/json"
               }
             ],
-            "url": "{{base_url}}/products?q=snare&category={{category_id}}&featured=true&sort=name&per_page=6"
+            "url": "{{base_url}}/products?q=coating&category={{category_id}}&featured=true&sort=name&per_page=6"
           }
         },
         {
@@ -189,7 +189,7 @@
                 "value": "application/json"
               }
             ],
-            "url": "{{base_url}}/news?q=snare"
+            "url": "{{base_url}}/news?q=coating"
           }
         },
         {
@@ -226,7 +226,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"SMA Negeri 1 Bandung\",\n  \"company\": \"SMA Negeri 1 Bandung\",\n  \"email\": \"humas@example.test\",\n  \"phone\": \"081234567890\",\n  \"product_id\": {{product_id}},\n  \"quantity\": 8,\n  \"subject\": \"Penawaran snare untuk tim drumband\",\n  \"message\": \"Kami ingin meminta penawaran untuk 8 unit snare drum sekolah.\"\n}"
+              "raw": "{\n  \"name\": \"PT Nusantara Manufacturing\",\n  \"company\": \"PT Nusantara Manufacturing\",\n  \"email\": \"humas@example.test\",\n  \"phone\": \"081234567890\",\n  \"product_id\": {{product_id}},\n  \"quantity\": 8,\n  \"subject\": \"Penawaran coating untuk lini produksi\",\n  \"message\": \"Kami ingin meminta penawaran protective coating untuk lini produksi.\"\n}"
             },
             "url": "{{base_url}}/inquiries"
           },

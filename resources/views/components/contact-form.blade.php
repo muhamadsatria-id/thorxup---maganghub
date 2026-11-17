@@ -130,7 +130,7 @@
             type="text"
             value="{{ old('subject') }}"
             required
-            placeholder="Contoh: Penawaran snare untuk tim sekolah"
+            placeholder="Contoh: Penawaran coating untuk lini produksi"
             @class([$inputClass, $errorClass => $errors->has('subject')])
             @if ($errors->has('subject')) aria-invalid="true" aria-describedby="subject-error" @endif
         >
