@@ -137,7 +137,7 @@
                 @endif
             </div>
 
-            <div class="flex-1 h-1 bg-secondary-fixed/40 rounded-full"></div>
+            <div class="flex-1 h-1 bg-white/40 rounded-full"></div>
         </div>
 
         <div class="mt-space-2xl pt-space-lg border-t border-primary-container flex flex-col sm:flex-row items-center justify-between gap-space-md">

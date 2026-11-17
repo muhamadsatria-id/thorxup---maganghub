@@ -15,7 +15,7 @@
         ['label' => 'Tentang', 'route' => 'about', 'pattern' => 'about'],
         ['label' => 'Berita', 'route' => 'news', 'pattern' => 'news*'],
         ['label' => 'Produk', 'route' => 'products', 'pattern' => ['products*', 'categories*']],
-        ['label' => 'Kontak', 'route' => 'contact', 'pattern' => 'contact'],
+        ['label' => 'Kontak', 'route' => 'home', 'pattern' => 'contact', 'anchor' => '#quote-inquiry'],
     ];
 
     $productsActive = request()->routeIs('products*') || request()->routeIs('categories*');
@@ -90,7 +90,7 @@
 
                             <a
                                 class="{{ $itemActive ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }} font-label-lg text-label-lg transition-colors"
-                                href="{{ route($item['route']) }}"
+                                href="{{ route($item['route']) }}{{ $item['anchor'] ?? '' }}"
                                 @if ($itemActive) aria-current="page" @endif
                             >
                                 {{ $item['label'] }}
@@ -101,9 +101,6 @@
             </div>
 
             <div class="flex items-center gap-space-sm">
-                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center" aria-hidden="true">
-                    <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
-                </div>
 
                 <button
                     type="button"
@@ -133,7 +130,7 @@
 
                 <a
                     class="flex items-center justify-between rounded-2xl px-space-md py-space-sm font-label-lg text-label-lg transition-colors {{ $itemActive ? 'bg-surface-container text-primary font-bold' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface' }}"
-                    href="{{ route($item['route']) }}"
+                    href="{{ route($item['route']) }}{{ $item['anchor'] ?? '' }}"
                     @if ($itemActive) aria-current="page" @endif
                 >
                     {{ $item['label'] }}
@@ -161,11 +158,7 @@
                 </div>
             @endif
 
-            @if ($profileBrand?->phone)
-                <a href="{{ $profileBrand->phoneUrl() }}" class="mt-space-sm text-center font-label-md text-label-md text-on-surface-variant transition-colors hover:text-primary">
-                    {{ $profileBrand->phone }}
-                </a>
-            @endif
+
         </nav>
     </div>
 </header>

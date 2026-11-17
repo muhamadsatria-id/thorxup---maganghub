@@ -144,8 +144,23 @@
     $inputErrorClass = 'shadow-[0_0_0_2px_#e11d48]';
 @endphp
 
+@push('head')
+<style>
+    .reveal { opacity: 0; transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); will-change: opacity, transform; }
+    .reveal-left { transform: translateX(-50px); }
+    .reveal-right { transform: translateX(50px); }
+    .reveal-up { transform: translateY(30px); }
+    .reveal.is-visible { opacity: 1; transform: translate(0,0); }
+    .delay-100 { transition-delay: .1s; }
+    .delay-200 { transition-delay: .2s; }
+    .delay-300 { transition-delay: .3s; }
+    @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
+    }
+</style>
+@endpush
 @section('content')
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full overflow-x-hidden">
         {{-- 1. HERO CAROUSEL --}}
         <section
             class="relative w-full overflow-hidden bg-primary text-on-primary h-[640px] md:h-[680px] lg:h-[720px] flex items-center select-none cursor-grab active:cursor-grabbing"
@@ -163,8 +178,8 @@
                                 src="{{ $slide['image'] }}"
                                 @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif
                             >
-                            <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/75"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/60"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/90 to-primary/95"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/90"></div>
                             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
                         </div>
 
@@ -860,6 +875,31 @@
             </div>
         </section>
     </div>
+    <script>
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                var sections = document.querySelectorAll('main section');
+                sections.forEach(function (el, i) {
+                    if (i === 0) { return; } // hero: no animation
+                    el.classList.add('reveal');
+                    el.classList.add(i % 2 === 0 ? 'reveal-left' : 'reveal-right');
+                });
+                if (!('IntersectionObserver' in window)) {
+                    sections.forEach(function (el) { el.classList.add('is-visible'); });
+                    return;
+                }
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                sections.forEach(function (el) { io.observe(el); });
+            });
+        })();
+    </script>
 @endsection
 
 @push('head')
