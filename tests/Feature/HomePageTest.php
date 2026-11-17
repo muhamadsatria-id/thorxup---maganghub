@@ -44,3 +44,15 @@ it('renders the home page when the database is empty', function () {
         ->assertOk()
         ->assertSee('THORXup');
 });
+
+it('renders the complete home page structure', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('id="heroCarousel"', false)
+        ->assertSee('id="product-categories"', false)
+        ->assertSee('id="inventory-showcase"', false)
+        ->assertSee('id="quote-inquiry"', false)
+        ->assertSee('id="connect-cards-track"', false)
+        ->assertSee('action="'.route('contact.store').'"', false)
+        ->assertSee('Terhubung Dengan Kami');
+});

@@ -21,6 +21,16 @@ class ProfileBrand extends Model
         'email',
         'phone',
         'whatsapp',
+        'instagram',
+        'facebook',
+        'youtube',
+        'tiktok',
+        'linkedin',
+        'shopee',
+        'tokopedia',
+        'bukalapak',
+        'lazada',
+        'maps_link',
     ];
 
     /**

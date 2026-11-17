@@ -26,9 +26,9 @@ class HomeController extends Controller
                 ->with('category')
                 ->orderByDesc('is_featured')
                 ->orderBy('sort_order')
-                ->take(5)
+                ->take(12)
                 ->get(),
-            'news' => News::query()->published()->latest('published_at')->take(3)->get(),
+            'news' => News::query()->published()->latest('published_at')->take(6)->get(),
         ]);
     }
 }

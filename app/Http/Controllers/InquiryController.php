@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inquiry;
 use App\Http\Requests\StoreInquiryRequest;
+use App\Models\Inquiry;
 use Illuminate\Http\RedirectResponse;
 
 class InquiryController extends Controller
